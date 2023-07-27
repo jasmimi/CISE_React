@@ -1,0 +1,12 @@
+{
+  "name": "cise_ass1a_worksheet2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jasmine amohia",
+  "license": "ISC"
+}
