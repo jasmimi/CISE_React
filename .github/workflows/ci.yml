@@ -25,6 +25,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
         
       - name: Install dependencies
+        working-directory: ../cise_ass1a_worksheet2-frontend
         run: npm install
       
       - name: Run the tests
@@ -32,5 +33,6 @@ jobs:
         run: npm test
       
       - name: Build
+        working-directory: ../cise_ass1a_worksheet2-frontend
         run: npm run build
       
