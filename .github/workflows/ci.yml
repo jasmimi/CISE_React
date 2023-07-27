@@ -28,7 +28,7 @@ jobs:
         run: npm install
       
       - name: Run the tests
-        working-directory: ./cise_ass1a_worksheet2-frontend
+        working-directory: ./CISE_Repo/cise_ass1a_worksheet2-frontend
         run: npm test
       
       - name: Build
