@@ -12,8 +12,13 @@ const app = express();
 // Connect Database
 connectDB();
 
-// cors
-app.use(cors({ origin: true, credentials: true }));
+// // cors
+// app.use(cors({ origin: true, credentials: true }));
+
+// Allow requests from your frontend's domain
+app.use(cors({
+  origin: 'https://books-frontend-git-logolink-jasmimi.vercel.app'
+}));
 
 // Init Middleware
 app.use(express.json({ extended: false }));

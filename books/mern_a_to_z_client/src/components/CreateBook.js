@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import config from '../config';
 
 function CreateBook(props) {
   // Define the state with useState hook
@@ -23,7 +24,7 @@ function CreateBook(props) {
     e.preventDefault();
 
     axios
-      .post('http://localhost:8082/api/books', book)
+      .post(`${config.apiUrl}/api/books`, book)
       .then((res) => {
         setBook({
           title: '',
