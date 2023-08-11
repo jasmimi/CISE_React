@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useState, useEffect } from 'react';
 import '../App.css';
 import axios from 'axios';
@@ -13,8 +14,9 @@ function ShowBookList() {
       .then((res) => {
         setBooks(res.data);
       })
+      // eslint-disable-next-line no-unused-vars
       .catch((err) => {
-        console.log('Error from ShowBookList');
+        console.log('Error from ShowBookList: ');
       });
   }, []);
 

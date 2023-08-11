@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../App.css';
 
-function UpdateBookInfo(props) {
+// eslint-disable-next-line no-unused-vars
+function UpdateBookInfo(_props) {
   const [book, setBook] = useState({
     title: '',
     isbn: '',
@@ -29,7 +31,8 @@ function UpdateBookInfo(props) {
           publisher: res.data.publisher,
         });
       })
-      .catch((err) => {
+      // eslint-disable-next-line no-unused-vars
+      .catch((_err) => {
         console.log('Error from UpdateBookInfo');
       });
   }, [id]);
@@ -52,9 +55,11 @@ function UpdateBookInfo(props) {
 
     axios
       .put(`http://localhost:8082/api/books/${id}`, data)
+      // eslint-disable-next-line no-unused-vars
       .then((res) => {
         navigate(`/show-book/${id}`);
       })
+      // eslint-disable-next-line no-unused-vars
       .catch((err) => {
         console.log('Error in UpdateBookInfo!');
       });
@@ -67,12 +72,12 @@ function UpdateBookInfo(props) {
           <div className="col-md-8 m-auto">
             <br />
             <Link to="/" className="btn btn-outline-warning float-left">
-              Show BooK List
+              Show Book List
             </Link>
           </div>
           <div className="col-md-8 m-auto">
             <h1 className="display-4 text-center">Edit Book</h1>
-            <p className="lead text-center">Update Book's Info</p>
+            <p className="lead text-center">Update Books Info</p>
           </div>
         </div>
 

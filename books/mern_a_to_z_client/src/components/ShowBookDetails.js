@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-unescaped-entities */
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import '../App.css';
@@ -20,6 +22,7 @@ function ShowBookDetails(props) {
       });
   }, [id]);
 
+  // eslint-disable-next-line no-shadow
   const onDeleteClick = (id) => {
     axios
       .delete(`http://localhost:8082/api/books/${id}`)
@@ -92,6 +95,7 @@ function ShowBookDetails(props) {
               type="button"
               className="btn btn-outline-danger btn-lg btn-block"
               onClick={() => {
+                // eslint-disable-next-line no-underscore-dangle
                 onDeleteClick(book._id);
               }}
             >
@@ -100,6 +104,7 @@ function ShowBookDetails(props) {
           </div>
           <div className="col-md-6 m-auto">
             <Link
+              // eslint-disable-next-line no-underscore-dangle
               to={`/edit-book/${book._id}`}
               className="btn btn-outline-info btn-lg btn-block"
             >
