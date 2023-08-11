@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../App.css';
+import config from '../../config';
 
 // eslint-disable-next-line no-unused-vars
 function UpdateBookInfo(_props) {
@@ -20,7 +21,7 @@ function UpdateBookInfo(_props) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8082/api/books/${id}`)
+      .get(`${config.apiUrl}/api/books/${id}`)
       .then((res) => {
         setBook({
           title: res.data.title,
@@ -54,7 +55,7 @@ function UpdateBookInfo(_props) {
     };
 
     axios
-      .put(`http://localhost:8082/api/books/${id}`, data)
+      .put(`${config.apiUrl}/api/books/${id}`, data)
       // eslint-disable-next-line no-unused-vars
       .then((res) => {
         navigate(`/show-book/${id}`);

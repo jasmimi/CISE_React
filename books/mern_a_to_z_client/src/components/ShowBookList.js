@@ -4,13 +4,14 @@ import '../App.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import BookCard from './BookCard';
+import config from '../../config';
 
 function ShowBookList() {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
     axios
-      .get('http://localhost:8082/api/books')
+      .get(`${config.apiUrl}/api/books`)
       .then((res) => {
         setBooks(res.data);
       })
