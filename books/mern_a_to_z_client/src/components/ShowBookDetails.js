@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import '../App.css';
 import axios from 'axios';
-import config from '../../config';
+import config from '../config';
 
 function ShowBookDetails(props) {
   const [book, setBook] = useState({});

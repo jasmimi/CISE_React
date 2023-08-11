@@ -4,7 +4,7 @@ import '../App.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import BookCard from './BookCard';
-import config from '../../config';
+import config from '../config';
 
 function ShowBookList() {
   const [books, setBooks] = useState([]);
