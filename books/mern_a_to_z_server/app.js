@@ -9,6 +9,8 @@ const books = require('./routes/api/books');
 
 const app = express();
 
+const allowedOrigins = ['https://cise-react-nine.vercel.app'];
+
 // Connect Database
 connectDB();
 
@@ -17,7 +19,13 @@ connectDB();
 
 // Allow requests from your frontend's domain
 app.use(cors({
-  origin: 'https://cise-react-nine.vercel.app'
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 }));
 
 // Init Middleware
