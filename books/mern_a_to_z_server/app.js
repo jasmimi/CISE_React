@@ -17,7 +17,7 @@ connectDB();
 
 // Allow requests from your frontend's domain
 app.use(cors({
-  origin: 'https://books-frontend-git-logolink-jasmimi.vercel.app'
+  origin: 'https://cise-react-nine.vercel.app'
 }));
 
 // Init Middleware
