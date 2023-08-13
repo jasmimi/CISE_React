@@ -1,1 +1,1 @@
-web: node books/mern_a_to_z_server/app.js
+web: cd books/mern_a_to_z_server && npm run app
