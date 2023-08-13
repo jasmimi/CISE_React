@@ -18,15 +18,7 @@ connectDB();
 // app.use(cors({ origin: true, credentials: true }));
 
 // Allow requests from your frontend's domain
-app.use(cors({
-  origin: (origin, callback) => {
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
-}));
+app.use(cors());
 
 // Init Middleware
 app.use(express.json({ extended: false }));
