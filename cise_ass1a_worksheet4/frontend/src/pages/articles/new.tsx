@@ -1,5 +1,7 @@
-import { FormEvent, useState } from "react";
-import formStyles from "../../../styles/Form.module.scss";
+import React, { FormEvent, useState } from "react";
+import formStyles from "../../styles/Form.module.scss";
+import axios from 'axios';
+import config from "../config";
 
 const NewDiscussion = () => {
   const [title, setTitle] = useState("");
@@ -7,8 +9,25 @@ const NewDiscussion = () => {
   const [source, setSource] = useState("");
   const [pubYear, setPubYear] = useState<number>(0);
   const [doi, setDoi] = useState("");
-  const [summary, setSummary] = useState("");
-  const [linkedDiscussion, setLinkedDiscussion] = useState("");
+  const [selectedClaim, setSelectedClaim] = useState("Code Quality Improvement");
+  const [selectedEvidence, setSelectedEvidence] = useState("Strong Support");
+  
+  const [article, setArticle] = useState({
+    title: '',
+    authors: '',
+    source: '',
+    publication_year: '',
+    doi: '',
+    claim: '',
+    evidence: '',
+  })
+
+  const onChange = (event: FormEvent<HTMLFormElement>) => {
+    const { name, value } = event.target as HTMLInputElement;
+    setArticle({ ...article, [name]: value });
+  };
+
+
   const submitNewArticle = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -19,10 +38,29 @@ const NewDiscussion = () => {
         source,
         publication_year: pubYear,
         doi,
-        summary,
-        linked_discussion: linkedDiscussion,
+        claim: selectedClaim,
+        evidence: selectedEvidence,
       })
     );
+
+    axios
+      .post(`${config.apiUrl}/api/articles`, article)
+      .then((res) => {
+        setArticle({
+          title: '',
+          authors: '',
+          source: '',
+          publication_year: '',
+          doi: '',
+          claim: '',
+          evidence: '',
+        })
+
+        // navigate('/');
+      })
+      .catch((err) => {
+        console.log('Error logging article')
+      })
   };
 
   // Some helper methods for the authors array
@@ -133,13 +171,25 @@ const NewDiscussion = () => {
           }}
         />
 
-        <label htmlFor="summary">Summary:</label>
-        <textarea
-          className={formStyles.formTextArea}
-          name="summary"
-          value={summary}
-          onChange={(event) => setSummary(event.target.value)}
-        />
+        <label htmlFor="dropdown">Select a claim option:</label>
+        <select
+          id="dropdown"
+          value={selectedClaim}
+          onChange={(event) => setSelectedClaim(event.target.value)}
+        >
+          <option value="Code Quality Improvement">Code Quality Improvement</option>
+          <option value="Product Quality Improvement">Product Quality Improvement</option>
+        </select>
+
+        <label htmlFor="dropdown">Select an evidence option:</label>
+        <select
+          id="dropdown"
+          value={selectedEvidence}
+          onChange={(event) => setSelectedEvidence(event.target.value)}
+        >
+          <option value="Strong Support">Strong Support</option>
+          <option value="Weak Support">Weak Support</option>
+        </select>
 
         <button className={formStyles.formItem} type="submit">
           Submit

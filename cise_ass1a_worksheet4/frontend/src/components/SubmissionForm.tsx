@@ -22,11 +22,16 @@ export default function SubmissionForm() {
         <input {...register("doi")} placeholder="DOI" />
       </p>
 
-      <select {...register("linked_discussion")}>
-        <option value="">Select SE practice...</option>
-        <option value="TDD">TDD</option>
-        <option value="Mob Programming">Mob Programmin</option>
+      <select {...register("claim")}>
+        <option value="Code Quality Improvement">Code Quality Improvement</option>
+        <option value="Product Quality Improvement">Product Quality Improvement</option>
       </select>
+
+      <select {...register("evidence")}>
+        <option value="Strong support">Strong support</option>
+        <option value="Weak support">Weak support</option>
+      </select>
+
       <input type="submit" />
       </form>
   );
